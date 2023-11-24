@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhwfbjovd5oac"]
+
+[ext_resource type="Script" path="res://C3 Larmet.gd" id="1_p4pjn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2rok"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs301"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g0ny3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l61tp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_coxho"]
+albedo_color = Color(0.101961, 0.337255, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uyysp"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mh7uo"]
+
+[node name="Principal" type="Node3D"]
+
+[node name="C3 Larmet" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0416969, 0)
+linear_damp = 5.0
+angular_damp = 5.0
+script = ExtResource("1_p4pjn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="C3 Larmet"]
+transform = Transform3D(3.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_u2rok")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="C3 Larmet"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_fs301")
+mesh = SubResource("BoxMesh_g0ny3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="C3 Larmet"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, 1.02554, -0.497985, 0.711824)
+mesh = SubResource("CylinderMesh_l61tp")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="C3 Larmet"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, 1.02554, -0.497985, -0.675388)
+mesh = SubResource("CylinderMesh_l61tp")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="C3 Larmet"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, -1.03077, -0.497985, 0.711824)
+mesh = SubResource("CylinderMesh_l61tp")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="C3 Larmet"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, -1.14675, -0.497985, -0.685821)
+mesh = SubResource("CylinderMesh_l61tp")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="C3 Larmet"]
+transform = Transform3D(1.5, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.705282, 0.686876, 0.00499034)
+mesh = SubResource("BoxMesh_uyysp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.232953, 0, -0.972488, 0, 1, 0, 0.972488, 0, 0.232953, -3.72529, 2.19081, 0.103773)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -2.30834, 0)
+shape = SubResource("WorldBoundaryShape3D_mh7uo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 5, -4)

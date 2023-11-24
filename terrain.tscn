@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3xbsveqr3rbj"]
+
+[sub_resource type="Environment" id="Environment_26p3t"]
+background_mode = 1
+
+[node name="Terrain" type="WorldEnvironment"]
+environment = SubResource("Environment_26p3t")

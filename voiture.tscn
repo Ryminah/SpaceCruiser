@@ -1,0 +1,161 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfuajwpdve8hh"]
+
+[sub_resource type="GDScript" id="GDScript_4y4b8"]
+script/source = "extends VehicleBody3D
+
+
+const STEER_SPEED = 1.5
+const STEER_LIMIT = 0.4
+var steer_target = 0
+@export var engine_force_value = 400
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	var fwd_mps = linear_velocity * transform.basis
+
+	#steer_target = Input.get_action_strength(\"turn_left\") - Input.get_action_strength(\"turn_right\")
+	#steer_target *= STEER_LIMIT
+
+	if Input.is_action_pressed(\"accelerate\"):
+		# Increase engine force at low speeds to make the initial acceleration faster.
+		print(\"Larmet\")
+		var speed = linear_velocity.length()
+		if speed < 5 and speed != 0:
+			engine_force = clamp(engine_force_value * 5 / speed, 0, 100)
+		else:
+			engine_force = engine_force_value
+	else:
+		engine_force = 0
+
+	if Input.is_action_pressed(\"reverse\"):
+		# Increase engine force at low speeds to make the initial acceleration faster.
+		if fwd_mps.x >= -1:
+			var speed = linear_velocity.length()
+			if speed < 5 and speed != 0:
+				engine_force = -clamp(engine_force_value * 5 / speed, 0, 100)
+			else:
+				engine_force = -engine_force_value
+		else:
+			brake = 1
+	else:
+		brake = 0.0
+
+	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
+
+func _on_body_entered(body):
+	if body.is_in_group(\"Mechant\"):
+		queue_free()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2rok"]
+size = Vector3(2.51828, 1, 1.45744)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs301"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g0ny3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uyysp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrvvx"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_0mjx2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l61tp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_coxho"]
+albedo_color = Color(0.101961, 0.337255, 1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mi8ml"]
+
+[node name="Voiture" type="VehicleBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+max_contacts_reported = 1
+script = SubResource("GDScript_4y4b8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00303996)
+shape = SubResource("BoxShape3D_u2rok")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_fs301")
+mesh = SubResource("BoxMesh_g0ny3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.748155, 0.686876, 0.00499034)
+mesh = SubResource("BoxMesh_uyysp")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.282894, 0.959151, 0, -0.959151, 0.282894, 0, 0, 0, 1, 1.83045, 0.142189, 0)
+material_override = SubResource("StandardMaterial3D_nrvvx")
+mesh = SubResource("PrismMesh_0mjx2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -6, 3, 0)
+
+[node name="AVD" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.026, -0.498, 0.712)
+use_as_traction = true
+use_as_steering = true
+
+[node name="AVDShape" type="MeshInstance3D" parent="AVD"]
+transform = Transform3D(-4.37114e-08, -0.2, 4.37114e-08, 0, -8.74228e-09, -1, 1, -8.74228e-09, 1.91069e-15, 0.000176013, 1.49906e-05, -0.000460029)
+mesh = SubResource("CylinderMesh_l61tp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="AVDCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, 1.026, -0.498, 0.712)
+shape = SubResource("CylinderShape3D_mi8ml")
+
+[node name="AVG" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.026, -0.498, -0.702909)
+use_as_traction = true
+use_as_steering = true
+
+[node name="AVGShape" type="MeshInstance3D" parent="AVG"]
+transform = Transform3D(-4.37114e-08, -0.2, 4.37114e-08, 0, -8.74228e-09, -1, 1, -8.74228e-09, 1.91069e-15, 0.000176013, 1.49906e-05, -0.000460029)
+mesh = SubResource("CylinderMesh_l61tp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="AVGCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, 1.026, -0.498, -0.702909)
+shape = SubResource("CylinderShape3D_mi8ml")
+
+[node name="ARG" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.13375, -0.498, -0.702909)
+use_as_traction = true
+
+[node name="ARGShape" type="MeshInstance3D" parent="ARG"]
+transform = Transform3D(-4.37114e-08, -0.2, 4.37114e-08, 0, -8.74228e-09, -1, 1, -8.74228e-09, 1.91069e-15, 0.000176013, 1.49906e-05, -0.000460029)
+mesh = SubResource("CylinderMesh_l61tp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="ARGCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, -1.13375, -0.498, -0.702909)
+shape = SubResource("CylinderShape3D_mi8ml")
+
+[node name="ARD" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.09868, -0.498, 0.682788)
+use_as_traction = true
+
+[node name="ARDShape" type="MeshInstance3D" parent="ARD"]
+transform = Transform3D(-4.37114e-08, -0.2, 4.37114e-08, 0, -8.74228e-09, -1, 1, -8.74228e-09, 1.91069e-15, 0.000176013, 1.49906e-05, -0.000460029)
+mesh = SubResource("CylinderMesh_l61tp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_coxho")
+
+[node name="ARDCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-09, -1, 0, 0.2, -4.37114e-08, -1.09868, -0.498, 0.682788)
+shape = SubResource("CylinderShape3D_mi8ml")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

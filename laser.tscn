@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcdmrpl7dlgwe"]
+
+[ext_resource type="Script" path="res://Laser.gd" id="1_fmhsw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhxf2"]
+albedo_color = Color(1, 0.215686, 0, 1)
+metallic = 0.47
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 3.0
+ao_enabled = true
+ao_light_affect = 0.22
+refraction_enabled = true
+refraction_scale = -0.62
+
+[sub_resource type="BoxMesh" id="BoxMesh_cw2fj"]
+size = Vector3(1000, 50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ankkp"]
+data = PackedVector3Array(-500, 25, 25, 500, 25, 25, -500, -25, 25, 500, 25, 25, 500, -25, 25, -500, -25, 25, 500, 25, -25, -500, 25, -25, 500, -25, -25, -500, 25, -25, -500, -25, -25, 500, -25, -25, 500, 25, 25, 500, 25, -25, 500, -25, 25, 500, 25, -25, 500, -25, -25, 500, -25, 25, -500, 25, -25, -500, 25, 25, -500, -25, -25, -500, 25, 25, -500, -25, 25, -500, -25, -25, 500, 25, 25, -500, 25, 25, 500, 25, -25, -500, 25, 25, -500, 25, -25, 500, 25, -25, -500, -25, 25, 500, -25, 25, -500, -25, -25, 500, -25, 25, 500, -25, -25, -500, -25, -25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oxqy8"]
+data = PackedVector3Array(-500, 25, 25, 500, 25, 25, -500, -25, 25, 500, 25, 25, 500, -25, 25, -500, -25, 25, 500, 25, -25, -500, 25, -25, 500, -25, -25, -500, 25, -25, -500, -25, -25, 500, -25, -25, 500, 25, 25, 500, 25, -25, 500, -25, 25, 500, 25, -25, 500, -25, -25, 500, -25, 25, -500, 25, -25, -500, 25, 25, -500, -25, -25, -500, 25, 25, -500, -25, 25, -500, -25, -25, 500, 25, 25, -500, 25, 25, 500, 25, -25, -500, 25, 25, -500, 25, -25, 500, 25, -25, -500, -25, 25, 500, -25, 25, -500, -25, -25, 500, -25, 25, 500, -25, -25, -500, -25, -25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u4esn"]
+data = PackedVector3Array(-500, 25, 25, 500, 25, 25, -500, -25, 25, 500, 25, 25, 500, -25, 25, -500, -25, 25, 500, 25, -25, -500, 25, -25, 500, -25, -25, -500, 25, -25, -500, -25, -25, 500, -25, -25, 500, 25, 25, 500, 25, -25, 500, -25, 25, 500, 25, -25, 500, -25, -25, 500, -25, 25, -500, 25, -25, -500, 25, 25, -500, -25, -25, -500, 25, 25, -500, -25, 25, -500, -25, -25, 500, 25, 25, -500, 25, 25, 500, 25, -25, -500, 25, 25, -500, 25, -25, 500, 25, -25, -500, -25, 25, 500, -25, 25, -500, -25, -25, 500, -25, 25, 500, -25, -25, -500, -25, -25)
+
+[node name="Laser" type="Area3D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_fmhsw")
+
+[node name="Laser1" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -5.96046e-08, 0, 2)
+material_override = SubResource("StandardMaterial3D_yhxf2")
+mesh = SubResource("BoxMesh_cw2fj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -5.96046e-08, 0, 2)
+shape = SubResource("ConcavePolygonShape3D_ankkp")
+
+[node name="Laser2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -5.96046e-08, 335, 2)
+material_override = SubResource("StandardMaterial3D_yhxf2")
+mesh = SubResource("BoxMesh_cw2fj")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -5.96046e-08, 335, 2)
+shape = SubResource("ConcavePolygonShape3D_oxqy8")
+
+[node name="Laser3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -5.96046e-08, -329, 2)
+material_override = SubResource("StandardMaterial3D_yhxf2")
+mesh = SubResource("BoxMesh_cw2fj")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -5.96046e-08, -329, 2)
+shape = SubResource("ConcavePolygonShape3D_u4esn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

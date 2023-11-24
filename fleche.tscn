@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj3pqd0mtdqdk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71sfd"]
+emission_enabled = true
+emission = Color(0.917647, 0.572549, 0, 1)
+emission_energy_multiplier = 2.08
+
+[sub_resource type="BoxMesh" id="BoxMesh_46v6p"]
+size = Vector3(30, 100, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcupp"]
+emission_enabled = true
+emission = Color(0.917647, 0.572549, 0, 1)
+emission_energy_multiplier = 2.08
+
+[sub_resource type="PrismMesh" id="PrismMesh_183v2"]
+size = Vector3(70, 50, 1)
+
+[node name="Fleche" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_71sfd")
+mesh = SubResource("BoxMesh_46v6p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 73.9999, 0)
+material_override = SubResource("StandardMaterial3D_qcupp")
+mesh = SubResource("PrismMesh_183v2")
+skeleton = NodePath("../MeshInstance3D")

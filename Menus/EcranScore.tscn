@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbyh7gmvasa34"]
+
+[ext_resource type="Texture2D" uid="uid://d2wu1l4084uml" path="res://Images/fotor-ai-20231107213133.jpg" id="1_pgaj6"]
+[ext_resource type="Script" path="res://Menus/EcranScore.gd" id="1_v2lha"]
+[ext_resource type="FontFile" uid="uid://b5u1de5es7tka" path="res://font/astro/astro.ttf" id="3_2dc3b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6rvb"]
+bg_color = Color(0, 0.509804, 0.819608, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wep0"]
+bg_color = Color(0.6, 0, 0.6, 1)
+
+[node name="EcranScore" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v2lha")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(573.5, 323)
+scale = Vector2(0.562012, 0.318359)
+texture = ExtResource("1_pgaj6")
+
+[node name="VBoxContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 465.0
+offset_top = 247.0
+offset_right = 737.0
+offset_bottom = 458.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d6rvb")
+
+[node name="LabelScore" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 61.0
+offset_right = 282.0
+offset_bottom = 87.0
+text = "Score : "
+
+[node name="LabelTemps" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 110.0
+offset_right = 282.0
+offset_bottom = 136.0
+text = "Temps : 
+"
+
+[node name="Titre" type="Label" parent="VBoxContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 10.0
+offset_right = 84.0
+offset_bottom = 36.0
+grow_horizontal = 2
+text = "Résumé de la partie :"
+
+[node name="ScoreEnd" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 61.0
+offset_right = 112.0
+offset_bottom = 84.0
+
+[node name="TempsEnd" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 110.0
+offset_right = 112.0
+offset_bottom = 133.0
+
+[node name="MeilleurScore" type="Label" parent="VBoxContainer"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 154.0
+offset_right = 281.0
+offset_bottom = 180.0
+text = "Meilleur Score : 
+"
+
+[node name="TopScore" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 131.0
+offset_top = 154.0
+offset_right = 171.0
+offset_bottom = 177.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 84.0
+offset_right = 977.0
+offset_bottom = 185.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_2dc3b")
+theme_override_font_sizes/font_size = 70
+text = "Victory !"
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 481.0
+offset_right = 658.0
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("3_2dc3b")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6wep0")
+text = "Menu"
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

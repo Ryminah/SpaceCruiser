@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhwfbjovd5oac"]
+
+[ext_resource type="Script" path="res://principal.gd" id="1_b2mq2"]
+[ext_resource type="PackedScene" uid="uid://br0qpt5uan1f4" path="res://ennemi.tscn" id="2_pej86"]
+[ext_resource type="PackedScene" uid="uid://b3xbsveqr3rbj" path="res://terrain.tscn" id="3_ex8yh"]
+[ext_resource type="PackedScene" uid="uid://ctdmo636gmy1k" path="res://ship.tscn" id="4_t5y6i"]
+
+[node name="Principal" type="Node3D"]
+script = ExtResource("1_b2mq2")
+
+[node name="Terrain" parent="." instance=ExtResource("3_ex8yh")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 5, -4)
+
+[node name="Ennemi" parent="." instance=ExtResource("2_pej86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.577, 0, -2.608)
+
+[node name="Ennemi2" parent="." instance=ExtResource("2_pej86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.833, 0, 2.921)
+
+[node name="Ennemi3" parent="." instance=ExtResource("2_pej86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.819, 0, 5.094)
+
+[node name="Ennemi4" parent="." instance=ExtResource("2_pej86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1265.93, -2.30834, -683.394)
+
+[node name="Ennemi5" parent="." instance=ExtResource("2_pej86")]
+transform = Transform3D(0.724292, 0, 0.689493, 0, 1, 0, -0.689493, 0, 0.724292, 5.928, 0, 4.965)
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 346.0
+offset_bottom = 37.0
+
+[node name="lblvitesse" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 76.0
+offset_top = 5.0
+offset_right = 116.0
+offset_bottom = 33.0
+text = "0"
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 65.0
+offset_bottom = 32.0
+text = "vitesse"
+
+[node name="Ship" parent="." instance=ExtResource("4_t5y6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.657296, 3.96922, 2.58101)

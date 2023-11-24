@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx8mmqykr417b"]
+
+[ext_resource type="Script" path="res://Online.gd" id="1_u66v0"]
+[ext_resource type="PackedScene" uid="uid://ctdmo636gmy1k" path="res://ship.tscn" id="2_5udb3"]
+
+[node name="Online" type="Node"]
+script = ExtResource("1_u66v0")
+player_scene = ExtResource("2_5udb3")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 274.0
+offset_right = 495.0
+offset_bottom = 148.0
+
+[node name="Label" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 25.0
+offset_right = 88.0
+offset_bottom = 51.0
+text = "Direct "
+
+[node name="Host" type="Button" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 55.0
+offset_right = 85.0
+offset_bottom = 86.0
+text = "Host"
+
+[node name="Connect" type="Button" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 78.0
+offset_right = 96.0
+offset_bottom = 125.0
+text = "Connect"
+
+[node name="Remote" type="LineEdit" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 25.0
+offset_right = 202.063
+offset_bottom = 56.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://ship.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="UI/Panel/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Panel/Connect" to="." method="_on_connect_pressed"]

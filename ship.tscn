@@ -1,0 +1,582 @@
+[gd_scene load_steps=42 format=3 uid="uid://ctdmo636gmy1k"]
+
+[ext_resource type="Script" path="res://ship.gd" id="1_30c8k"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_ef6wi"]
+[ext_resource type="PackedScene" uid="uid://ck4p6vksk5s2e" path="res://canon.tscn" id="2_n8tcd"]
+[ext_resource type="AudioStream" uid="uid://bwuh2a1fpxs8x" path="res://Audio/Spaceship Thruster Sound Effect.mp3" id="3_e01id"]
+[ext_resource type="AudioStream" uid="uid://cqii0dix7hbt2" path="res://Audio/GunShotSnglShotEx PE1097508.mp3" id="5_ixcjs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krhjp"]
+albedo_color = Color(0, 0.0627451, 0.156863, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ngbu5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s45gy"]
+albedo_color = Color(0, 0.0627451, 0.156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aq1sf"]
+size = Vector3(1.65, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxn1d"]
+albedo_color = Color(0, 0.0627451, 0.156863, 1)
+roughness = 0.33
+normal_enabled = true
+refraction_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_55kwf"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oaw0v"]
+albedo_color = Color(0, 0.0627451, 0.156863, 1)
+metallic_specular = 0.42
+metallic_texture_channel = 2
+roughness = 0.34
+refraction_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wajr"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_s7umu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tnc0"]
+albedo_color = Color(0, 0.0627451, 0.156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgch3"]
+size = Vector3(1, 0.4, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ha5px"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7el8o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_il6nf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pmip"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jmrqf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7gdne"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lr0lp"]
+albedo_color = Color(0.262745, 0, 0.537255, 1)
+roughness = 0.0
+normal_enabled = true
+normal_scale = 4.7
+
+[sub_resource type="PrismMesh" id="PrismMesh_6o8ew"]
+size = Vector3(1, 1, 0.999)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ns1ff"]
+albedo_color = Color(0, 0.0627451, 0.156863, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_mikl6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhqp2"]
+albedo_color = Color(0, 0.0627451, 0.156863, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3im3v"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_c705a"]
+material = SubResource("StandardMaterial3D_3im3v")
+inner_radius = 0.4
+outer_radius = 0.3
+ring_segments = 64
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1cocr"]
+size = Vector3(1.50782, 0.582384, 1.65939)
+
+[sub_resource type="MeshTexture" id="MeshTexture_xi6ju"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ebf8"]
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 2.5
+backlight_enabled = true
+backlight = Color(0, 1, 0.87451, 1)
+proximity_fade_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fqyce"]
+radius = 0.375
+height = 0.75
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56i7w"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 0, -1)
+spread = 7.34
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_min = 0.4
+scale_max = 0.4
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11m7r"]
+blend_mode = 1
+no_depth_test = true
+albedo_color = Color(0, 0.0784314, 0.239216, 1)
+emission_enabled = true
+emission = Color(0.227451, 0, 0.976471, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_71rq7"]
+lightmap_size_hint = Vector2i(4, 7)
+material = SubResource("StandardMaterial3D_11m7r")
+size = Vector2(0.5, 1)
+subdivide_width = 1
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0s1ut"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 6.45
+
+[sub_resource type="BoxMesh" id="BoxMesh_1274g"]
+size = Vector3(0.01, 0.001, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpnbx"]
+blend_mode = 1
+no_depth_test = true
+albedo_color = Color(1, 0.815686, 0.254902, 1)
+emission_enabled = true
+emission = Color(0.972549, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_02moc"]
+material = SubResource("StandardMaterial3D_kpnbx")
+size = Vector2(2, 2)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_w27gp"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+
+[node name="Ship" type="CharacterBody3D" groups=["Vaisseau"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_30c8k")
+
+[node name="Coque" type="Node3D" parent="."]
+transform = Transform3D(-0.44907, 0.893497, 0, -0.893497, -0.44907, 0, 0, 0, 2, 1.07055, 0.498314, -1.99914)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coque"]
+material_override = SubResource("StandardMaterial3D_krhjp")
+mesh = SubResource("PrismMesh_ngbu5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.616486, 0.787366, 0, -0.787366, -0.616486, 0, 0, 0, 1, 0.978666, -1.8982, -0.000904381)
+material_override = SubResource("StandardMaterial3D_krhjp")
+mesh = SubResource("PrismMesh_ngbu5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(0.449069, 0.893497, 0, -0.893497, 0.449069, 0, 0, 0, 1, 0.336235, -1.02917, 0.0035702)
+material_override = SubResource("StandardMaterial3D_krhjp")
+mesh = SubResource("PrismMesh_ngbu5")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.44907, -0.893497, 0, 0.893497, -0.44907, 0, 0, 0, 0.5, 0.332745, -1.01095, -0.00158018)
+material_override = SubResource("StandardMaterial3D_s45gy")
+mesh = SubResource("BoxMesh_aq1sf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.44907, -0.893497, 0, 0.893497, -0.44907, 0, 0, 0, 0.5, 0.564127, -0.914627, 1.58407)
+material_override = SubResource("StandardMaterial3D_hxn1d")
+mesh = SubResource("BoxMesh_55kwf")
+skeleton = NodePath("../..")
+
+[node name="pont" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.44907, -0.893497, 0, 0.893497, -0.44907, 0, 0, 0, 0.5, 0.340623, -1.02696, 0.838519)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("BoxMesh_1wajr")
+skeleton = NodePath("../..")
+
+[node name="pont2" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.44907, -0.893497, 0, 0.893497, -0.44907, 0, 0, 0, 0.5, 0.340623, -1.02696, 0.693156)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("BoxMesh_1wajr")
+skeleton = NodePath("../..")
+
+[node name="cabine" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.893497, 0.224535, 0, -0.44907, -0.446748, 0, 0, 0, 0.5, 0.677986, -1.6951, 0.691828)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_s7umu")
+skeleton = NodePath("../..")
+
+[node name="cabine2" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(0.893497, -0.224535, 0, 0.449069, 0.446748, 0, 0, 0, 0.5, 0.00508916, -0.35626, 0.691828)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_s7umu")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(2.80064e-08, -0.893497, -1.34721, -6.78076e-08, -0.44907, 2.68049, -1, 5.42672e-09, -2.19488e-07, 0.841089, -0.775427, -0.000974894)
+material_override = SubResource("StandardMaterial3D_4tnc0")
+mesh = SubResource("BoxMesh_wgch3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(2.80064e-08, -0.446748, -1.12267, -6.78076e-08, -0.224535, 2.23374, -1, 2.71335e-09, -1.82907e-07, 1.17388, -0.895952, -0.000974894)
+material_override = SubResource("StandardMaterial3D_4tnc0")
+mesh = SubResource("BoxMesh_wgch3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(2.80064e-08, -0.446748, -1.12267, -6.78076e-08, -0.224535, 2.23374, -1, 2.71335e-09, -1.82907e-07, 0.952126, -0.454743, -0.000974894)
+material_override = SubResource("StandardMaterial3D_4tnc0")
+mesh = SubResource("BoxMesh_wgch3")
+skeleton = NodePath("../..")
+
+[node name="Aileron3" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(3.92589e-08, -1.83668, 0.158321, -7.8112e-08, 0.791605, 0.367335, -1, -3.34849e-08, -5.61943e-09, -1.31297, 0.0702839, 0.00717157)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+skeleton = NodePath("../..")
+
+[node name="Aileron2" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(3.92589e-08, -0.898139, 0.357399, -7.8112e-08, 1.78699, 0.179628, -1, -4.37114e-08, 3.82137e-16, -0.281513, 1.45045, -0.00292987)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+skeleton = NodePath("../..")
+
+[node name="Aileron1" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(3.92589e-08, -0.460644, -0.389246, -7.8112e-08, -1.94623, 0.0921286, -1, 3.34849e-08, -5.61943e-09, 0.20985, -2.96931, -0.0023424)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+skeleton = NodePath("../..")
+
+[node name="Aileron4" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-1.17777e-07, 0.898139, -0.357399, 2.34336e-07, -1.78699, -0.179628, -1, -1.31134e-07, 3.82137e-16, 1.9536, -3.01441, -0.000929773)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+skeleton = NodePath("../..")
+
+[node name="Tourelle" type="Node3D" parent="Coque"]
+transform = Transform3D(-0.44907, -0.893497, 0, 0.893497, -0.44907, 0, 0, 0, 0.5, 0.212107, -1.09155, 0.99957)
+visible = false
+
+[node name="Base" type="MeshInstance3D" parent="Coque/Tourelle"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.5, -0.624343)
+material_override = SubResource("StandardMaterial3D_7el8o")
+mesh = SubResource("BoxMesh_il6nf")
+skeleton = NodePath("../../..")
+
+[node name="Corps" type="MeshInstance3D" parent="Coque/Tourelle"]
+transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.1, 0, 0.703054, -0.610927)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("BoxMesh_jmrqf")
+
+[node name="Tete" type="MeshInstance3D" parent="Coque/Tourelle"]
+transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0.860215, -0.610927)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("BoxMesh_jmrqf")
+
+[node name="canon1" type="MeshInstance3D" parent="Coque/Tourelle"]
+transform = Transform3D(0.05, 0, 0, 0, -1.31134e-08, -0.05, 0, 0.3, -2.18557e-09, 0.157036, 0.860215, -0.366127)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("CylinderMesh_7gdne")
+
+[node name="canon" type="MeshInstance3D" parent="Coque/Tourelle"]
+transform = Transform3D(0.05, 0, 0, 0, -1.31134e-08, -0.05, 0, 0.3, -2.18557e-09, -0.169876, 0.860215, -0.366127)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("CylinderMesh_7gdne")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.893497, 1.94265e-08, -0.44907, -0.44907, 5.86854e-08, 0.893497, 2.18557e-08, 0.5, -2.18557e-08, 0.341125, -1.02671, 1.5874)
+material_override = SubResource("StandardMaterial3D_lr0lp")
+mesh = SubResource("PrismMesh_6o8ew")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.892622, 0.0395347, -0.44907, -0.44863, 0.0198701, 0.893497, 0.0221236, 0.49951, -2.18343e-08, 0.593974, -0.899626, 0.755133)
+material_override = SubResource("StandardMaterial3D_ns1ff")
+mesh = SubResource("PrismMesh_mikl6")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.44907, 3.9056e-08, 0.893497, 0.893497, 1.96295e-08, 0.44907, 0, 0.5, -2.18557e-08, 0.159216, -0.413286, -0.515903)
+material_override = SubResource("StandardMaterial3D_fhqp2")
+mesh = SubResource("TorusMesh_c705a")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Coque"]
+transform = Transform3D(-0.44907, 3.9056e-08, 0.893497, 0.893497, 1.96295e-08, 0.44907, 0, 0.5, -2.18557e-08, 0.725618, -1.54023, -0.515903)
+material_override = SubResource("StandardMaterial3D_fhqp2")
+mesh = SubResource("TorusMesh_c705a")
+skeleton = NodePath("../..")
+
+[node name="Canons" type="Node3D" parent="Coque"]
+
+[node name="Canon" parent="Coque/Canons" instance=ExtResource("2_n8tcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.754016, -1.15633, 1.77615)
+
+[node name="Canon2" parent="Coque/Canons" instance=ExtResource("2_n8tcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505487, -0.66184, 1.77615)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0893469, 1.16961, -0.630473)
+shape = SubResource("BoxShape3D_1cocr")
+
+[node name="Particles" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0196165, 0.521603, -2.59672)
+light_color = Color(0, 0, 1, 1)
+light_energy = 4.571
+light_projector = SubResource("MeshTexture_xi6ju")
+light_size = 0.281
+shadow_enabled = true
+distance_fade_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.601584, 0, -0.381941)
+material_override = SubResource("StandardMaterial3D_3ebf8")
+mesh = SubResource("CapsuleMesh_fqyce")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.679417, 0, -0.389614)
+material_override = SubResource("StandardMaterial3D_3ebf8")
+mesh = SubResource("CapsuleMesh_fqyce")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="ReacteurParticles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664402, 0)
+
+[node name="reacteurParticle" type="GPUParticles3D" parent="ReacteurParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634828, -0.160808, -3.01034)
+layers = 7
+emitting = false
+amount = 100
+lifetime = 0.5
+randomness = 0.5
+fract_delta = false
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("QuadMesh_71rq7")
+
+[node name="reacteurParticle2" type="GPUParticles3D" parent="ReacteurParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.617141, -0.147504, -2.93692)
+layers = 7
+emitting = false
+amount = 100
+lifetime = 0.5
+randomness = 0.5
+fract_delta = false
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("QuadMesh_71rq7")
+
+[node name="Lumieres" type="Node3D" parent="."]
+
+[node name="Lumierevaisseau" type="OmniLight3D" parent="Lumieres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30367, -0.661895)
+light_energy = 0.858
+omni_range = 8.001
+
+[node name="Lumierevaisseau2" type="OmniLight3D" parent="Lumieres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.34891, -0.661895)
+light_energy = 0.286
+
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="CameraDerriere" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-1, 1.69693e-08, -1.44795e-07, -2.47958e-08, 0.958934, 0.28363, 1.43662e-07, 0.28363, -0.958934, 0, 2.98163, -7.5934)
+current = true
+script = ExtResource("2_ef6wi")
+
+[node name="CameraStable" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-1, 1.69693e-08, -1.44795e-07, -2.47958e-08, 0.958934, 0.28363, 1.43662e-07, 0.28363, -0.958934, 0, 2.98163, -7.5934)
+current = true
+script = ExtResource("2_ef6wi")
+
+[node name="SpeedParticles" type="Node3D" parent="."]
+
+[node name="speedParticle6" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362876, -2.32984, -3.4194)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.210706, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="speedParticle" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11985, 2.63871, -3.36186)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="speedParticle2" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81783, 2.63871, -3.36186)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="speedParticle3" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11985, 0.251559, -3.36186)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="speedParticle4" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80437, 0.235002, -3.4194)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.210706, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="speedParticle5" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.383514, 4.15849, -2.98891)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.210706, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="speedParticle7" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94957, 3.8674, -2.98891)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.210706, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="speedParticle8" type="GPUParticles3D" parent="SpeedParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64568, 3.8674, -2.98891)
+layers = 7
+material_override = SubResource("StandardMaterial3D_0s1ut")
+emitting = false
+amount = 5
+lifetime = 1.85
+speed_scale = 2.94
+fixed_fps = 60
+visibility_aabb = AABB(-0.402456, -0.131043, -0.210706, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("BoxMesh_1274g")
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="Thruster" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("3_e01id")
+volume_db = 9.927
+
+[node name="Boost" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("3_e01id")
+volume_db = 20.774
+pitch_scale = 2.59
+
+[node name="Shot" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_ixcjs")
+volume_db = -10.0
+
+[node name="BoostParticles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107229, 0)
+
+[node name="BoostParticles" type="GPUParticles3D" parent="BoostParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634726, 0.608132, -3.36186)
+layers = 7
+emitting = false
+amount = 100
+lifetime = 2.07
+randomness = 0.37
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_passes = 2
+draw_pass_2 = SubResource("QuadMesh_02moc")
+
+[node name="BoostParticles2" type="GPUParticles3D" parent="BoostParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.616561, 0.588052, -3.36186)
+layers = 7
+emitting = false
+amount = 100
+lifetime = 2.07
+randomness = 0.37
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_passes = 2
+draw_pass_2 = SubResource("QuadMesh_02moc")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_w27gp")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="Timers"]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0412002, 1.16961, -0.630473)
+shape = SubResource("BoxShape3D_1cocr")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

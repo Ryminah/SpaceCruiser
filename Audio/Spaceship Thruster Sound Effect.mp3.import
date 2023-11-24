@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwuh2a1fpxs8x"
+path="res://.godot/imported/Spaceship Thruster Sound Effect.mp3-ef48620344c3d1f43a0625dcd8e8aef8.mp3str"
+
+[deps]
+
+source_file="res://Audio/Spaceship Thruster Sound Effect.mp3"
+dest_files=["res://.godot/imported/Spaceship Thruster Sound Effect.mp3-ef48620344c3d1f43a0625dcd8e8aef8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

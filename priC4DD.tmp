@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhwfbjovd5oac"]
+
+[ext_resource type="Script" path="res://principal.gd" id="1_b2mq2"]
+[ext_resource type="PackedScene" uid="uid://btx6bm7rku3m1" path="res://sun.tscn" id="4_qcwd6"]
+[ext_resource type="PackedScene" uid="uid://ctdmo636gmy1k" path="res://ship.tscn" id="4_t5y6i"]
+[ext_resource type="PackedScene" uid="uid://b3xbsveqr3rbj" path="res://terrain.tscn" id="5_bq2hf"]
+[ext_resource type="PackedScene" uid="uid://32b38cesuumy" path="res://anneaux.tscn" id="5_n4vmm"]
+[ext_resource type="Script" path="res://Panel.gd" id="6_483p6"]
+[ext_resource type="PackedScene" uid="uid://pa8n6j48ilxm" path="res://asteroid.tscn" id="7_rsrac"]
+
+[node name="Principal" type="Node3D"]
+script = ExtResource("1_b2mq2")
+
+[node name="Ship" parent="." instance=ExtResource("4_t5y6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.657296, 3.96922, 7.39226)
+
+[node name="Terrain" parent="." instance=ExtResource("5_bq2hf")]
+
+[node name="sun" parent="." instance=ExtResource("4_qcwd6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1309.12, 530.671, 1080.61)
+light_color = Color(1, 1, 0, 1)
+light_energy = 9.884
+light_size = 0.107
+
+[node name="IHM" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IHM Point" type="Panel" parent="IHM"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -161.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("6_483p6")
+
+[node name="Label" type="Label" parent="IHM/IHM Point"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 40.0
+text = "Points : "
+
+[node name="Points" type="Label" parent="IHM/IHM Point"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60.0
+offset_right = 122.0
+offset_bottom = 23.0
+
+[node name="Panel" type="Panel" parent="IHM"]
+layout_mode = 0
+offset_right = 131.0
+offset_bottom = 28.0
+
+[node name="Label" type="Label" parent="IHM/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Vitesse :"
+
+[node name="Speed" type="Label" parent="IHM/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 68.0
+offset_right = 128.0
+offset_bottom = 29.0
+
+[node name="Anneaux" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3652, 128.541, 535.96)
+
+[node name="Anneau" parent="Anneaux" instance=ExtResource("5_n4vmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7548, -115.137, -374.315)
+
+[node name="Anneau2" parent="Anneaux" instance=ExtResource("5_n4vmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1826, -6.58669, -85.7818)
+visible = false
+
+[node name="Anneau3" parent="Anneaux" instance=ExtResource("5_n4vmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 58.5954, 75.3273)
+visible = false
+
+[node name="Anneau4" parent="Anneaux" instance=ExtResource("5_n4vmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1826, 315.812, 470.746)
+visible = false
+
+[node name="Anneau5" parent="Anneaux" instance=ExtResource("5_n4vmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 110.059, 1322.04)
+visible = false
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="asteroid" parent="Asteroids" instance=ExtResource("7_rsrac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -302, 191, 137)
+
+[node name="asteroid2" parent="Asteroids" instance=ExtResource("7_rsrac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8396, 59.3887, 268.93)
+
+[node name="asteroid3" parent="Asteroids" instance=ExtResource("7_rsrac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -302, 191, 1264.18)
+
+[node name="DeathCam" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.657296, 3.96922, -0.36573)
+
+[node name="MainCam" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6.28395, 0)

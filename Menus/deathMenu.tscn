@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://chteceli1hasc"]
+
+[ext_resource type="Script" path="res://Menus/deathMenu.gd" id="1_3iam4"]
+[ext_resource type="FontFile" uid="uid://b5u1de5es7tka" path="res://font/astro/astro.ttf" id="2_epk53"]
+[ext_resource type="Texture2D" uid="uid://bg2im1toao21h" path="res://Images/An-image-of-a-crashed-spaceship.png" id="2_pl74m"]
+[ext_resource type="FontFile" uid="uid://vfqy1hrv7kew" path="res://font/Terano-Font/Terano Bold.ttf" id="3_0yeo5"]
+[ext_resource type="AudioStream" uid="uid://b6vlfquh0mgam" path="res://Audio/Cinematic HorrorSci-Fi Music - Journey into the Black  Royalty Free No Copyright.mp3" id="5_n7myr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ciee"]
+bg_color = Color(0, 0.509804, 0.819608, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_tlvu8"]
+font = ExtResource("2_epk53")
+font_size = 80
+
+[node name="DeathMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -138.0
+offset_right = 210.5
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_3iam4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(206.5, 138.5)
+scale = Vector2(0.425595, 0.414714)
+texture = ExtResource("2_pl74m")
+
+[node name="VBoxContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.5
+offset_top = -104.0
+offset_right = 209.5
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ciee")
+
+[node name="LabelScore" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 61.0
+offset_right = 282.0
+offset_bottom = 87.0
+text = "Score : "
+
+[node name="LabelTemps" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 110.0
+offset_right = 282.0
+offset_bottom = 136.0
+text = "Temps : 
+"
+
+[node name="Titre" type="Label" parent="VBoxContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 11.0
+offset_right = 185.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_0yeo5")
+theme_override_font_sizes/font_size = 0
+text = "Résumé de la partie :"
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 61.0
+offset_right = 112.0
+offset_bottom = 84.0
+
+[node name="Temps" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 110.0
+offset_right = 112.0
+offset_bottom = 133.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.355107
+anchor_top = -0.5
+anchor_right = 1.46437
+anchor_bottom = -0.0833333
+grow_horizontal = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_tlvu8")
+horizontal_alignment = 1
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0.72549, 1, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -358.5
+offset_top = -180.0
+offset_right = -248.5
+offset_bottom = -127.0
+scale = Vector2(10.3376, 12.0174)
+color = Color(1, 0.196078, 0.145098, 1)
+
+[node name="StartButton" type="Button" parent="."]
+layout_direction = 1
+layout_mode = 2
+offset_left = 129.5
+offset_top = 197.0
+offset_right = 332.5
+offset_bottom = 228.0
+size_flags_vertical = 4
+button_mask = 7
+text = "Recommencer"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_n7myr")
+autoplay = true
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 240.0
+offset_right = 333.0
+offset_bottom = 271.0
+text = "Retour au menu"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

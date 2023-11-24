@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhc7hbs2n3dav"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_eh7mn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x74mt"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.737255, 0.788235, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_3pkgc"]
+size = Vector3(0.2, 0.2, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6cj0a"]
+data = PackedVector3Array(-0.1, 0.1, 1, 0.1, 0.1, 1, -0.1, -0.1, 1, 0.1, 0.1, 1, 0.1, -0.1, 1, -0.1, -0.1, 1, 0.1, 0.1, -1, -0.1, 0.1, -1, 0.1, -0.1, -1, -0.1, 0.1, -1, -0.1, -0.1, -1, 0.1, -0.1, -1, 0.1, 0.1, 1, 0.1, 0.1, -1, 0.1, -0.1, 1, 0.1, 0.1, -1, 0.1, -0.1, -1, 0.1, -0.1, 1, -0.1, 0.1, -1, -0.1, 0.1, 1, -0.1, -0.1, -1, -0.1, 0.1, 1, -0.1, -0.1, 1, -0.1, -0.1, -1, 0.1, 0.1, 1, -0.1, 0.1, 1, 0.1, 0.1, -1, -0.1, 0.1, 1, -0.1, 0.1, -1, 0.1, 0.1, -1, -0.1, -0.1, 1, 0.1, -0.1, 1, -0.1, -0.1, -1, 0.1, -0.1, 1, 0.1, -0.1, -1, -0.1, -0.1, -1)
+
+[node name="bullet" type="CharacterBody3D" groups=["bullet"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_eh7mn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["bullet"]]
+layers = 7
+material_override = SubResource("StandardMaterial3D_x74mt")
+mesh = SubResource("BoxMesh_3pkgc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_6cj0a")
+
+[node name="RayCast3D" type="RayCast3D" parent="." groups=["bullet"]]
+target_position = Vector3(0, 0, 0.6)
+collision_mask = 7
+collide_with_areas = true

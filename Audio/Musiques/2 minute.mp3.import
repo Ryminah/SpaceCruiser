@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1q5juwhuh84m"
+path="res://.godot/imported/2 minute.mp3-5596e8e5af6b8ebd66e66f595083ebac.mp3str"
+
+[deps]
+
+source_file="res://Audio/Musiques/2 minute.mp3"
+dest_files=["res://.godot/imported/2 minute.mp3-5596e8e5af6b8ebd66e66f595083ebac.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0.0
+beat_count=0
+bar_beats=4

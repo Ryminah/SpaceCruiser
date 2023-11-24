@@ -1,0 +1,216 @@
+[gd_scene load_steps=22 format=3 uid="uid://ctdmo636gmy1k"]
+
+[ext_resource type="Script" path="res://ship.gd" id="1_30c8k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oaw0v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wajr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1cocr"]
+size = Vector3(1.50782, 1, 2.27557)
+
+[sub_resource type="PrismMesh" id="PrismMesh_s7umu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tnc0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgch3"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ha5px"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_xi6ju"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ebf8"]
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 2.5
+backlight_enabled = true
+backlight = Color(0, 1, 0.87451, 1)
+proximity_fade_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fqyce"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_827ko"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e6k45"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56i7w"]
+direction = Vector3(0, 0, -1)
+spread = 9.37
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_min = 0.4
+scale_max = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11m7r"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+albedo_color = Color(0.290196, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 0.976471, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_71rq7"]
+material = SubResource("StandardMaterial3D_11m7r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7el8o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_il6nf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pmip"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jmrqf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7gdne"]
+
+[node name="Ship" type="CharacterBody3D" groups=["Vaisseau"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_30c8k")
+max_speed = null
+acceleration = null
+pitch_speed = null
+roll_speed = null
+yaw_speed = null
+
+[node name="pont" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.612828)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("BoxMesh_1wajr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.630473)
+shape = SubResource("BoxShape3D_1cocr")
+
+[node name="cabine" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00926751, -0.999957, 0, 0.999957, 0.00926751, 0.00378826, 0, 0.377015)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_s7umu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 1.69693e-08, -1.44795e-07, -2.47958e-08, 0.958934, 0.28363, 1.43662e-07, 0.28363, -0.958934, 0, 2.98163, -7.5934)
+doppler_tracking = 2
+current = true
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 3, 0, 1, 0, -2, 0, -1.31134e-07, 0, 0, -2.00109)
+material_override = SubResource("StandardMaterial3D_4tnc0")
+mesh = SubResource("BoxMesh_wgch3")
+
+[node name="Aileron3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 1.53209, 0.257115, 0, 1.28558, -0.306418, -2, -6.69697e-08, -1.12389e-08, 2, 1, -2.001)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+
+[node name="Particles" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0196165, 0, -2.47039)
+light_color = Color(0, 0, 1, 1)
+light_energy = 4.571
+light_projector = SubResource("MeshTexture_xi6ju")
+light_size = 0.281
+shadow_enabled = true
+distance_fade_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01442, 0, -0.542068)
+material_override = SubResource("StandardMaterial3D_3ebf8")
+mesh = SubResource("CapsuleMesh_fqyce")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00331, 0, -0.54512)
+material_override = SubResource("StandardMaterial3D_3ebf8")
+mesh = SubResource("CapsuleMesh_fqyce")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="reacteur1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -4.37114e-09, -0.5, 0, 0.1, -2.18557e-08, 1.05761, 0, -3.00361)
+material_override = SubResource("StandardMaterial3D_827ko")
+mesh = SubResource("CylinderMesh_e6k45")
+
+[node name="Aileron2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.18762e-07, 1.53209, -0.257115, -1.94117e-07, -1.28558, -0.306418, -2, 3.68961e-07, -1.12389e-08, 2, -1, -2.005)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+
+[node name="Aileron1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, -1.53209, 0.257115, 0, 1.28558, 0.306418, -2, 6.69697e-08, -1.12389e-08, -2, 1, -2.001)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+
+[node name="Aileron4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.43916e-07, -1.53209, -0.257115, -1.94117e-07, -1.28558, 0.306418, -2, 2.35022e-07, -1.12389e-08, -2, -1, -2.001)
+material_override = SubResource("StandardMaterial3D_oaw0v")
+mesh = SubResource("PrismMesh_ha5px")
+
+[node name="reacteur2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -4.37114e-09, -0.5, 0, 0.1, -2.18557e-08, -1, 0, -3.004)
+material_override = SubResource("StandardMaterial3D_827ko")
+mesh = SubResource("CylinderMesh_e6k45")
+
+[node name="ReacteurParticles" type="Node3D" parent="."]
+
+[node name="reacteurParticle" type="GPUParticles3D" parent="ReacteurParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01021, 0, -3.36186)
+layers = 7
+emitting = false
+amount = 1000
+randomness = 0.5
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+trail_lifetime = 1.52
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("QuadMesh_71rq7")
+
+[node name="reacteurParticle2" type="GPUParticles3D" parent="ReacteurParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02687, 0, -3.36186)
+emitting = false
+amount = 1000
+randomness = 0.5
+visibility_aabb = AABB(-0.402456, -0.131043, -0.287367, 0.804911, 0.262086, 0.574733)
+local_coords = true
+trail_lifetime = 1.52
+process_material = SubResource("ParticleProcessMaterial_56i7w")
+draw_pass_1 = SubResource("QuadMesh_71rq7")
+
+[node name="Lumieres" type="Node3D" parent="."]
+
+[node name="Lumierevaisseau" type="OmniLight3D" parent="Lumieres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30367, -0.661895)
+light_energy = 0.286
+
+[node name="Tourelle" type="Node3D" parent="."]
+
+[node name="Base" type="MeshInstance3D" parent="Tourelle"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.5, -0.624343)
+material_override = SubResource("StandardMaterial3D_7el8o")
+mesh = SubResource("BoxMesh_il6nf")
+skeleton = NodePath("../..")
+
+[node name="Corps" type="MeshInstance3D" parent="Tourelle"]
+transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.1, 0, 0.703054, -0.610927)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("BoxMesh_jmrqf")
+
+[node name="Tete" type="MeshInstance3D" parent="Tourelle"]
+transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0.860215, -0.610927)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("BoxMesh_jmrqf")
+
+[node name="canon1" type="MeshInstance3D" parent="Tourelle"]
+transform = Transform3D(0.05, 0, 0, 0, -1.31134e-08, -0.05, 0, 0.3, -2.18557e-09, 0.157036, 0.860215, -0.366127)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("CylinderMesh_7gdne")
+
+[node name="canon" type="MeshInstance3D" parent="Tourelle"]
+transform = Transform3D(0.05, 0, 0, 0, -1.31134e-08, -0.05, 0, 0.3, -2.18557e-09, -0.169876, 0.860215, -0.366127)
+material_override = SubResource("StandardMaterial3D_6pmip")
+mesh = SubResource("CylinderMesh_7gdne")

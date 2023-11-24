@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck4p6vksk5s2e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lutty"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.96
+roughness = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d1tk8"]
+top_radius = 0.05
+bottom_radius = 0.1
+height = 1.0
+
+[node name="Canon" type="Node3D"]
+
+[node name="Canon1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.871334, 0.0201685, 0.490276, 0.489615, 0.0304076, -0.87141, -0.0324832, 0.999334, 0.0166204, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lutty")
+mesh = SubResource("CylinderMesh_d1tk8")
+skeleton = NodePath("../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+target_position = Vector3(0, 0, 1)
+collision_mask = 7
+collide_with_areas = true

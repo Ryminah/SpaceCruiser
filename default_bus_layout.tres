@@ -1,0 +1,26 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://8bpmh1c6stlq"]
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_pe54e"]
+resource_name = "Chorus"
+
+[sub_resource type="AudioEffectLowShelfFilter" id="AudioEffectLowShelfFilter_kc5bw"]
+resource_name = "LowShelfFilter"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_psp2c"]
+resource_name = "Reverb"
+
+[resource]
+bus/0/solo = true
+bus/0/volume_db = -8.79822
+bus/0/effect/0/effect = SubResource("AudioEffectChorus_pe54e")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectLowShelfFilter_kc5bw")
+bus/0/effect/1/enabled = true
+bus/1/name = &"New Bus"
+bus/1/solo = true
+bus/1/mute = true
+bus/1/bypass_fx = true
+bus/1/volume_db = -1.91476
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_psp2c")
+bus/1/effect/0/enabled = true

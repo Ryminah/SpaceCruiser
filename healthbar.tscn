@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://yoin40mokpl5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jm03b"]
+bg_color = Color(0.427451, 0.427451, 0.427451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.992157, 0.992157, 0.992157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7jv2"]
+bg_color = Color(0.694118, 0, 0.0941176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="healthbar" type="ProgressBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -13.0
+offset_right = 101.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_jm03b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m7jv2")
+value = 100.0
+show_percentage = false

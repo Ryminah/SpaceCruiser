@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://pa8n6j48ilxm"]
+
+[ext_resource type="Script" path="res://asteroid.gd" id="1_bq1k1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5p63"]
+albedo_color = Color(0.368627, 0.368627, 0.368627, 1)
+emission_enabled = true
+emission = Color(0.207843, 0.207843, 0.207843, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_enyhn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_71fef"]
+
+[node name="asteroid" type="Area3D"]
+collision_layer = 5
+collision_mask = 7
+script = ExtResource("1_bq1k1")
+min_speed = null
+max_speed = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_j5p63")
+mesh = SubResource("SphereMesh_enyhn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
+shape = SubResource("SphereShape3D_71fef")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 0)
+light_energy = 6.143
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

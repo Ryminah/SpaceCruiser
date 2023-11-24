@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://dro2s71sajgrv"]
+
+[ext_resource type="PackedScene" uid="uid://ck4p6vksk5s2e" path="res://canon.tscn" id="1_dvldn"]
+[ext_resource type="Script" path="res://Tourelle.gd" id="1_lk1h3"]
+[ext_resource type="AudioStream" uid="uid://bschjnggykbo6" path="res://Audio/M60MachineGunCal7 PE1100804.mp3" id="3_6aiv5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j4in"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nkien"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63y04"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2ka3"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Tourelle" type="Node3D"]
+script = ExtResource("1_lk1h3")
+
+[node name="canons" type="Node3D" parent="."]
+
+[node name="Canon" parent="canons" instance=ExtResource("1_dvldn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137279, 0.800922, 0.420499)
+
+[node name="Canon2" parent="canons" instance=ExtResource("1_dvldn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115828, 0.800922, 0.420499)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_1j4in")
+mesh = SubResource("BoxMesh_nkien")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723018, 0)
+material_override = SubResource("StandardMaterial3D_63y04")
+mesh = SubResource("BoxMesh_n2ka3")
+
+[node name="Tir" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_6aiv5")
+max_distance = 3000.0

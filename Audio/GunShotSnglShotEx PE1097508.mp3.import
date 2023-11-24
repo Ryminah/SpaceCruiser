@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cqii0dix7hbt2"
+path="res://.godot/imported/GunShotSnglShotEx PE1097508.mp3-8fd200ff8cd744287b9974c7ec8cdd24.mp3str"
+
+[deps]
+
+source_file="res://Audio/GunShotSnglShotEx PE1097508.mp3"
+dest_files=["res://.godot/imported/GunShotSnglShotEx PE1097508.mp3-8fd200ff8cd744287b9974c7ec8cdd24.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

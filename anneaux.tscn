@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://32b38cesuumy"]
+
+[ext_resource type="Script" path="res://anneaux.gd" id="1_477go"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py78i"]
+emission_enabled = true
+emission = Color(0.886275, 1, 0, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="TorusMesh" id="TorusMesh_24fae"]
+uv2_padding = 2.56
+inner_radius = 73.397
+outer_radius = 77.887
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l5ibh"]
+height = 0.0716686
+
+[node name="Anneau" type="Area3D" groups=["Anneaux"]]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_477go")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_py78i")
+mesh = SubResource("TorusMesh_24fae")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(150, 0, 0, 0, -6.55671e-06, -150, 0, 150, -6.55671e-06, 0, 0, 0)
+shape = SubResource("CylinderShape3D_l5ibh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

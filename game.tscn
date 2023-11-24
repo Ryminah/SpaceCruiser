@@ -1,0 +1,412 @@
+[gd_scene load_steps=22 format=3 uid="uid://dicsoydj6ljbp"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_3yfnx"]
+[ext_resource type="PackedScene" uid="uid://ctdmo636gmy1k" path="res://ship.tscn" id="2_5e7p3"]
+[ext_resource type="PackedScene" uid="uid://b3xbsveqr3rbj" path="res://terrain.tscn" id="3_3cajg"]
+[ext_resource type="Script" path="res://Panel.gd" id="5_u5mm5"]
+[ext_resource type="PackedScene" uid="uid://32b38cesuumy" path="res://anneaux.tscn" id="6_a1rxx"]
+[ext_resource type="Script" path="res://Temps.gd" id="6_xpp4k"]
+[ext_resource type="PackedScene" uid="uid://pa8n6j48ilxm" path="res://asteroid.tscn" id="7_0q241"]
+[ext_resource type="FontFile" uid="uid://dsgikwashy5js" path="res://font/Press_Start_2P/PressStart2P-Regular.ttf" id="7_t7mx7"]
+[ext_resource type="AudioStream" uid="uid://cuxygduu707ap" path="res://Audio/Sonic Ring - Sound Effect (HD).mp3" id="9_y2l1j"]
+[ext_resource type="PackedScene" uid="uid://dcdmrpl7dlgwe" path="res://laser.tscn" id="10_gvbej"]
+[ext_resource type="PackedScene" uid="uid://dtg24bkbj5as7" path="res://tunnelforward.tscn" id="11_kl5ry"]
+[ext_resource type="PackedScene" uid="uid://7uchnbswucuo" path="res://tunnelcoude.tscn" id="12_nyger"]
+[ext_resource type="PackedScene" uid="uid://cxfcwopullodt" path="res://tunnelincline.tscn" id="13_3765y"]
+[ext_resource type="PackedScene" uid="uid://cinlahigcmfi7" path="res://tunnelforwardserre.tscn" id="13_l5oyo"]
+[ext_resource type="PackedScene" uid="uid://0diudh2e7ado" path="res://finishline.tscn" id="14_fisqv"]
+[ext_resource type="Script" path="res://Pause.gd" id="15_p8n6n"]
+[ext_resource type="FontFile" uid="uid://b5u1de5es7tka" path="res://font/astro/astro.ttf" id="16_f8ofm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ykei"]
+bg_color = Color(0.239216, 0.462745, 1, 0.2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_flele"]
+font = ExtResource("7_t7mx7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh52t"]
+bg_color = Color(0.6, 0.505882, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7eilk"]
+bg_color = Color(0.941176, 0.423529, 0.137255, 1)
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_3yfnx")
+mob_scene = ExtResource("7_0q241")
+
+[node name="Ship" parent="." instance=ExtResource("2_5e7p3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.657296, 3.96922, 7.39226)
+
+[node name="RingGet" type="AudioStreamPlayer3D" parent="Ship"]
+stream = ExtResource("9_y2l1j")
+volume_db = -4.093
+
+[node name="Terrain" parent="." instance=ExtResource("3_3cajg")]
+
+[node name="IHM" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IHM Point" type="Panel" parent="IHM"]
+layout_mode = 1
+offset_right = 264.0
+offset_bottom = 76.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ykei")
+script = ExtResource("5_u5mm5")
+
+[node name="Label" type="Label" parent="IHM/IHM Point"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 153.0
+offset_bottom = 28.0
+text = "Score : "
+label_settings = SubResource("LabelSettings_flele")
+
+[node name="Points" type="Label" parent="IHM/IHM Point"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 134.0
+offset_top = 5.0
+offset_right = 190.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_flele")
+
+[node name="Label2" type="Label" parent="IHM/IHM Point"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 40.0
+offset_right = 134.0
+offset_bottom = 67.0
+text = "Temps :"
+label_settings = SubResource("LabelSettings_flele")
+
+[node name="Temps" type="Label" parent="IHM/IHM Point"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 128.0
+offset_top = 40.0
+offset_right = 190.0
+offset_bottom = 63.0
+label_settings = SubResource("LabelSettings_flele")
+script = ExtResource("6_xpp4k")
+
+[node name="Panel" type="Panel" parent="IHM"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -277.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="IHM/Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 151.0
+offset_bottom = 28.0
+text = "Vitesse :"
+label_settings = SubResource("LabelSettings_flele")
+
+[node name="Speed" type="Label" parent="IHM/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 154.0
+offset_top = 5.0
+offset_right = 214.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_flele")
+
+[node name="Boosts" type="Label" parent="IHM/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 126.0
+offset_top = 40.0
+offset_right = 186.0
+offset_bottom = 63.0
+label_settings = SubResource("LabelSettings_flele")
+
+[node name="boostlabel" type="Label" parent="IHM/Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 40.0
+offset_right = 119.0
+offset_bottom = 67.0
+text = "Boost :"
+label_settings = SubResource("LabelSettings_flele")
+
+[node name="Anneaux" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3652, 128.541, 535.96)
+
+[node name="Anneau" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7548, -115.137, -374.315)
+
+[node name="Anneau2" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1826, -6.58669, -22.7818)
+
+[node name="Anneau3" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5954, 454.327)
+
+[node name="Anneau4" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1826, 163.812, 1221.75)
+
+[node name="Anneau5" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(0.00851849, 0.0669874, 0.997718, -0.00910949, 0.997718, -0.0669091, -0.999922, -0.00851849, 0.00910908, 641.331, 18.1068, 2323.9)
+
+[node name="Anneau6" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(-0.148811, 0.0653506, 0.986704, 0.14129, -0.986171, 0.0866242, 0.97872, 0.152302, 0.13752, 1774.05, 48.0354, 2094.96)
+
+[node name="Anneau7" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(-0.126826, 0.581374, 0.803691, -0.118764, -0.813305, 0.569587, 0.98479, -0.0232109, 0.172195, 2683.5, 279.114, 2239.95)
+
+[node name="Anneau8" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 5869.63, 963.459, 1859.04)
+
+[node name="Anneau9" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 6139.63, 1988.46, -852.96)
+
+[node name="Anneau10" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 4929.53, 4023.2, -752.803)
+
+[node name="Anneau11" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(-5.96046e-08, -0.258819, -0.965926, 0, 0.965926, -0.258819, 1, -1.54268e-08, -5.75737e-08, 3014.57, 3561.2, -1234.15)
+
+[node name="Anneau12" parent="Anneaux" instance=ExtResource("6_a1rxx")]
+transform = Transform3D(-5.96046e-08, -0.258819, -0.965926, 0, 0.965926, -0.258819, 1, -1.54268e-08, -5.75737e-08, 1412.91, 2506.73, -851.146)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="asteroid" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 1628, 156, 2822)
+
+[node name="asteroid2" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8396, 59.3887, 392.93)
+
+[node name="asteroid3" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -27, 125, 1264.18)
+
+[node name="asteroid11" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 213, 239, 1264.18)
+
+[node name="asteroid12" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -219, 239, 1264.18)
+
+[node name="asteroid13" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -219, -181, 1264.18)
+
+[node name="asteroid14" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 225, -181, 1264.18)
+
+[node name="asteroid5" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -27, 233, 1894.18)
+
+[node name="asteroid15" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 381, 13, 2536.18)
+
+[node name="asteroid4" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3574, 760, 2478)
+
+[node name="asteroid16" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2934, 480, 2563)
+
+[node name="asteroid6" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 6038, 1247, -167)
+
+[node name="asteroid7" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 4629, 1162, 2728)
+
+[node name="asteroid8" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4346.25, 4213.46, -104.602)
+
+[node name="asteroid9" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4994.25, 3861.46, -424.602)
+
+[node name="Laser" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1013, 93, 2622)
+
+[node name="Laser2" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1013, -62, 2622)
+
+[node name="Laser3" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5238, 1237, 2661)
+
+[node name="Laser4" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5238, 1139, 2661)
+
+[node name="Laser5" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5238, 1049, 2661)
+
+[node name="Laser6" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6118, 2857, -296)
+
+[node name="Laser7" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6211, 2983, -296)
+
+[node name="Laser8" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6031, 3163, -296)
+
+[node name="Laser9" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6130, 3337, -296)
+
+[node name="Laser10" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6241, 3458, -296)
+
+[node name="Laser11" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6077, 3537, -296)
+
+[node name="Laser12" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6144, 1035, 1706)
+
+[node name="Laser21" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6144, 1205, 1706)
+
+[node name="asteroid10" parent="Asteroids" instance=ExtResource("7_0q241")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 6005, 1057, 1356)
+
+[node name="Laser13" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 2239.51, 3251.2, -288)
+
+[node name="Laser14" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 2445.47, 3320.46, -288)
+
+[node name="Laser15" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 2449.75, 3473.04, -288)
+
+[node name="Laser16" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 2432.92, 3716.2, -288)
+
+[node name="Laser17" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 1984.99, 3334.03, -288)
+
+[node name="Laser18" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 1859.78, 3068.91, -288)
+
+[node name="Laser19" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 1810.07, 2867, -288)
+
+[node name="Laser20" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 1535.19, 2953.1, -288)
+
+[node name="Laser29" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0, 1, -66, 2945, -275)
+
+[node name="Laser30" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0, 1, -66, 2606.1, -275)
+
+[node name="Laser31" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0, 1, -66, 2814.1, -275)
+
+[node name="Laser32" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0, 1, -65.9999, 2518.1, -275)
+
+[node name="Laser33" parent="Asteroids" instance=ExtResource("10_gvbej")]
+transform = Transform3D(-0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 0, 1, 81.9624, 2587.73, -275)
+
+[node name="DeathCam" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.657296, 3.96922, -0.36573)
+
+[node name="Parcours" type="Node3D" parent="."]
+
+[node name="Tunnel" parent="Parcours" instance=ExtResource("11_kl5ry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30, 44, -70)
+
+[node name="Tunnel2" parent="Parcours" instance=ExtResource("11_kl5ry")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 44, 837)
+
+[node name="Tunnel5" parent="Parcours" instance=ExtResource("11_kl5ry")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30, 45, -1054)
+
+[node name="Tunnel3" parent="Parcours" instance=ExtResource("12_nyger")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31, 42, 1621)
+
+[node name="Tunnel4" parent="Parcours" instance=ExtResource("13_3765y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2407, 362, 2624)
+
+[node name="Tunnel6" parent="Parcours" instance=ExtResource("13_3765y")]
+transform = Transform3D(0.999806, -0.00907828, 0.0174536, -0.00931108, -0.999868, 0.0133027, 0.0173305, -0.0134627, -0.999759, 3538.63, 869.433, 2640.67)
+
+[node name="Tunnel7" parent="Parcours" instance=ExtResource("12_nyger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5145, 1174, 2658)
+
+[node name="Tunnel8" parent="Parcours" instance=ExtResource("12_nyger")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 0, -1, -1, -4.37114e-08, -4.37114e-08, 6155, 1176, 715)
+
+[node name="Tunnel9" parent="Parcours" instance=ExtResource("12_nyger")]
+transform = Transform3D(0, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 6155, 3046, -286)
+
+[node name="Tunnel10" parent="Parcours" instance=ExtResource("13_3765y")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3287, 3727, -286)
+
+[node name="Tunnel11" parent="Parcours" instance=ExtResource("13_3765y")]
+transform = Transform3D(-1, 2.98023e-08, -8.44439e-08, -1.59633e-15, 1, -2.26267e-08, 8.44439e-08, -2.26267e-08, -1, 2143.48, 3210.54, -279)
+
+[node name="Tunnel12" parent="Parcours" instance=ExtResource("13_l5oyo")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 1114, 2887, -275)
+
+[node name="Tunnel13" parent="Parcours" instance=ExtResource("13_l5oyo")]
+transform = Transform3D(-1, 1.33227e-15, 8.74228e-08, 0, -1, 5.96046e-08, 8.74228e-08, 5.96046e-08, 1, 783, 2890, -266)
+
+[node name="Tunnel14" parent="Parcours" instance=ExtResource("13_l5oyo")]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 512, 2891, -270)
+
+[node name="Tunnel15" parent="Parcours" instance=ExtResource("13_l5oyo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6143, 1168, 1000)
+
+[node name="Tunnel16" parent="Parcours" instance=ExtResource("13_l5oyo")]
+transform = Transform3D(4.37114e-08, 1, 3.82137e-15, 1, -4.37114e-08, 8.74228e-08, 8.74228e-08, 0, -1, 6150, 2755, -288)
+
+[node name="Tunnel17" parent="Parcours" instance=ExtResource("13_l5oyo")]
+transform = Transform3D(-0.866025, 5.96046e-08, -0.5, -0.5, 5.96046e-08, 0.866025, 8.65347e-08, 1, 2.18946e-08, 2912.22, 3508.45, -286)
+
+[node name="Finish" parent="." instance=ExtResource("14_fisqv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -470, 2895, -267)
+
+[node name="Pause" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_p8n6n")
+
+[node name="Panel" type="Panel" parent="Pause"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume" type="Button" parent="Pause"]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 270.0
+offset_right = 719.0
+offset_bottom = 310.0
+theme_override_fonts/font = ExtResource("16_f8ofm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fh52t")
+text = "Reprendre"
+
+[node name="Menu" type="Button" parent="Pause"]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 318.0
+offset_right = 719.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("16_f8ofm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7eilk")
+text = "RETOUR AU MENU"
+
+[connection signal="pressed" from="Pause/resume" to="Pause" method="_on_button_pressed"]
+[connection signal="pressed" from="Pause/Menu" to="Pause" method="_on_menu_pressed"]
